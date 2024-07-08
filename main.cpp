@@ -40,3 +40,9 @@ public:
 
     // Constructor to initialize activity name and capacity
     Activity(string n, int cap) : name(std::move(n)), max_capacity(cap) {}
+    // Method to add a student to the activity if capacity allows
+    bool addStudent(const Student& student) {
+        if (students.size() < max_capacity) {
+            students.push_back(student);
+            return true;
+        }
