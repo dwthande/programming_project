@@ -7,3 +7,24 @@
 #include <string> // used for storing stings. These are names, clubs, and sports. Without this no string values would be able to be stored.
 #include <fstream> // this is the file stream. It allows us to store the input into the .csv files.
 #include <sstream> // this is the string stream. Used in performing the input and output of the string values.
+
+using namespace std;
+
+// Classes Implementation
+// 1. Student Class -> To store details and selected activities.
+
+class Student {
+public:
+    // Variable declaration
+    string firstname;
+    string surname;
+    string gender;
+    int age;
+    int group;
+    vector<string> sports;
+    vector<string> clubs;
+
+    // Definition of the constructor
+    Student(string fn, string sn, string g, int a, int grp)
+            : firstname(fn), surname(sn), gender(g), age(a), group(grp) {}
+};
