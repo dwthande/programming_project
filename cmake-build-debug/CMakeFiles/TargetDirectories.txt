@@ -1,0 +1,3 @@
+/home/machtheg/Desktop/programming_project/cmake-build-debug/CMakeFiles/programming_project.dir
+/home/machtheg/Desktop/programming_project/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/machtheg/Desktop/programming_project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
