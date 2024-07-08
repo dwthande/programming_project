@@ -28,3 +28,15 @@ public:
     Student(string fn, string sn, string g, int a, int grp)
             : firstname(fn), surname(sn), gender(g), age(a), group(grp) {}
 };
+
+// Activity Implementation
+// 2. Activity Class -> To store details for students
+// Class representing an Activity with a name, maximum capacity, and enrolled students.
+class Activity {
+public:
+    string name;
+    int max_capacity;
+    vector<Student> students;
+
+    // Constructor to initialize activity name and capacity
+    Activity(string n, int cap) : name(std::move(n)), max_capacity(cap) {}
