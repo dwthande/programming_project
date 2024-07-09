@@ -76,3 +76,47 @@ void initializeActivities() {
     clubs.emplace_back("Business Club", 60);
     clubs.emplace_back("Computer Science Club", 60);
 }
+// Function to load student data from a file
+void loadFromFile(const string& filename) {
+    ifstream file(filename);
+    string line;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string firstname, surname, gender, age_str, group_str;
+        getline(ss, firstname, ',');
+        getline(ss, surname, ',');
+        getline(ss, gender, ',');
+        getline(ss, age_str, ',');
+        getline(ss, group_str, ',');
+
+        int age = stoi(age_str);
+        int group = stoi(group_str);
+        Student student(firstname, surname, gender, age, group);
+
+        string activity;
+        while (getline(ss, activity, ',')) {
+            bool found = false;
+            // Check if the activity is a sport
+            for (auto& sport : sports) {
+                if (sport.name == activity) {
+                    sport.addStudent(student);
+                    student.sports.push_back(activity);
+                    found = true;
+                    break;
+                }
+            }
+            // If not a sport, check if it's a club
+            if (!found) {
+                for (auto& club : clubs) {
+                    if (club.name == activity) {
+                        club.addStudent(student);
+                        student.clubs.push_back(activity);
+                        break;
+                    }
+                }
+            }
+        }
+        students.push_back(student);
+    }
+    file.close();
+}
