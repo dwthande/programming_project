@@ -46,3 +46,33 @@ public:
             students.push_back(student);
             return true;
         }
+        }
+        return false;
+    }
+
+    // Method to get the remaining capacity of the activity
+    int getRemainingCapacity() const {
+        return max_capacity - students.size();
+    }
+};
+
+// Global list of students, sports, and clubs
+vector<Student> students;
+vector<Activity> sports;
+vector<Activity> clubs;
+
+// Function to initialize activities
+void initializeActivities() {
+    // Initialize sports
+    sports.emplace_back("Rugby", 20);
+    sports.emplace_back("Athletics", 20);
+    sports.emplace_back("Swimming", 20);
+    sports.emplace_back("Soccer", 20); // Corrected "Football" to "Soccer" for consistency
+
+    // Initialize clubs
+    clubs.emplace_back("Journalism Club", 60);
+    clubs.emplace_back("Red Cross Society", 60);
+    clubs.emplace_back("AISEC", 60);
+    clubs.emplace_back("Business Club", 60);
+    clubs.emplace_back("Computer Science Club", 60);
+}
