@@ -140,3 +140,82 @@ void addStudent() {
     cout << "Enter Group (1, 2 or 3): ";
     cin >> group;
 
+ // Ask if the student wants to participate in sports
+    cout << "Do you want to participate in sports? (yes/no): ";
+    string participateInSports;
+    cin >> participateInSports;
+
+    // If student wants to participate in sports
+    if (participateInSports == "yes") {
+        // Allow selection of one sport
+        while (selectedSports.size() < 1) {
+            cout << "Select a sport (Rugby, Athletics, Swimming, Football): ";
+            string sport;
+            cin >> sport;
+            bool found = false;
+            // Check if the selected sport exists and has remaining capacity
+            for (auto& s : sports) {
+                if (s.name == sport && s.getRemainingCapacity() > 0) {
+                    s.addStudent({firstname, surname, gender, age, group});
+                    selectedSports.push_back(sport);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                cout << "Sport not found or full. Please try again.\n";
+            }
+        }
+
+        // Allow selection of up to two clubs
+        while (selectedClubs.size() < 2) {
+            cout << "Select a club (Journalism Club, Red Cross Society, AISEC, Business Club, Computer Science Club): ";
+            string club;
+            cin >> club;
+            bool found = false;
+            // Check if the selected club exists and has remaining capacity
+            for (auto& c : clubs) {
+                if (c.name == club && c.getRemainingCapacity() > 0) {
+                    c.addStudent({firstname, surname, gender, age, group});
+                    selectedClubs.push_back(club);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                cout << "Club not found or full. Please try again.\n";
+            }
+        }
+    } else {
+        // Allow selection of up to three clubs if no sport is selected
+        while (selectedClubs.size() < 1 || selectedClubs.size() > 3) {
+            cout << "Select up to 3 clubs (Journalism Club, Red Cross Society, AISEC, Business Club, Computer Science Club): ";
+            string club;
+            cin >> club;
+            bool found = false;
+            // Check if the selected club exists and has remaining capacity
+            for (auto& c : clubs) {
+                if (c.name == club && c.getRemainingCapacity() > 0) {
+                    c.addStudent({firstname, surname, gender, age, group});
+                    selectedClubs.push_back(club);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                cout << "Club not found or full. Please try again.\n";
+            }
+            if (selectedClubs.size() >= 1 && selectedClubs.size() <= 3) {
+                break;
+            }
+        }
+    }
+
+    // Create a new student object and add it to the global students vector
+    Student newStudent(firstname, surname, gender, age, group);
+    newStudent.sports = selectedSports;
+    newStudent.clubs = selectedClubs;
+    students.push_back(newStudent);
+
+    cout << "Student added successfully!\n";
+}
