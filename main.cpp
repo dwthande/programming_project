@@ -117,6 +117,26 @@ void loadFromFile(const string& filename) {
             }
         }
         students.push_back(student);
-    }
+    }file.close
     file.close();
 }
+
+// Function to add a student and their activities
+void addStudent() {
+    string firstname, surname, gender;
+    int age, group;
+    vector<string> selectedSports;
+    vector<string> selectedClubs;
+
+    // Get student details
+    cout << "Enter Firstname: ";
+    cin >> firstname;
+    cout << "Enter Surname: ";
+    cin >> surname;
+    cout << "Enter Gender (Male/Female): ";
+    cin >> gender;
+    cout << "Enter age: ";
+    cin >> age;
+    cout << "Enter Group (1, 2 or 3): ";
+    cin >> group;
+
