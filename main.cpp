@@ -219,3 +219,22 @@ void addStudent() {
 
     cout << "Student added successfully!\n";
 }
+// Function to view all students and their activities
+void viewStudents() {
+    for (const auto& student : students) {
+        cout << student.firstname << " " << student.surname << " (" << student.gender << ", " << student.age << ", Group " << student.group << ")";
+        if (!student.sports.empty()) {
+            cout << " - Sports: ";
+            for (const auto& sport : student.sports) {
+                cout << sport << " ";
+            }
+        }
+        if (!student.clubs.empty()) {
+            cout << " - Clubs: ";
+            for (const auto& club : student.clubs) {
+                cout << club << " ";
+            }
+        }
+        cout << endl;
+    }
+}
