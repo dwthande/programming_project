@@ -238,3 +238,69 @@ void viewStudents() {
         cout << endl;
     }
 }
+// Function to view activities
+void viewActivities(const vector<Activity>& activities) {
+    for (const auto& activity : activities) {
+        cout << activity.name << " (Remaining capacity: " << activity.getRemainingCapacity() << ")\n";
+    }
+}
+
+// Function to save students' data to a file
+void saveToFile() {
+    ofstream file("progcpp.csv");
+    for (const auto& student : students) {
+        file << student.firstname << "," << student.surname << "," << student.gender << "," << student.age << "," << student.group;
+        for (const auto& sport : student.sports) {
+            file << "," << sport;
+        }
+        for (const auto& club : student.clubs) {
+            file << "," << club;
+        }
+        file << "\n";
+    }
+    file.close();
+    cout << "Data saved to progcpp.csv\n";
+}
+
+int main() {
+    initializeActivities(); // Initialize the activities
+    loadFromFile("progcpp.csv"); // Load existing data from file
+
+    int choice;
+
+    // Main menu loop
+    while (true) {
+        // Display menu options
+        cout << "1. Add Student\n";
+        cout << "2. View Students\n";
+        cout << "3. View Clubs / Societies\n";
+        cout << "4. View Sports\n";
+        cout << "5. Save all Files\n";
+        cout << "6. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        // Execute the selected option
+        switch (choice) {
+            case 1:
+                addStudent(); // Add a new student
+                break;
+            case 2:
+                viewStudents(); // View all students
+                break;
+            case 3:
+                viewActivities(clubs); // View clubs/societies
+                break;
+            case 4:
+                viewActivities(sports); // View sports
+                break;
+            case 5:
+                saveToFile(); // Save data to file
+                break;
+            case 6:
+                return 0; // Exit the program
+            default:
+                cout << "Invalid choice. Please try again.\n";
+        }
+    }
+}
